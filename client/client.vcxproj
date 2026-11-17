@@ -928,7 +928,7 @@
     <TargetName>sampvoice</TargetName>
     <TargetExt>.asi</TargetExt>
     <IncludePath>$(VC_IncludePath);$(WindowsSdk_71A_IncludePath);$(DXSDK_DIR)\Include</IncludePath>
-    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSdk_71A_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;$(DXSDK_DIR)\Lib\x86;</LibraryPath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSdk_71A_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;$(DXSDK_DIR)\Lib\x86;$(LIB)</LibraryPath>
     <IntDir>temp\</IntDir>
     <MultiProcFXC>true</MultiProcFXC>
     <ExcludePath>$(VC_IncludePath);$(VC_ExecutablePath_x86);$(WindowsSdk_71A_ExecutablePath);$(WindowsSDK_ExecutablePath);$(VS_ExecutablePath);$(SystemRoot)\SysWow64;$(FxCopDir);$(MSBuild_ExecutablePath);$(VC_LibraryPath_x86);$(SystemRoot)</ExcludePath>
