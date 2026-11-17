@@ -662,7 +662,7 @@
     <ClCompile Include="include\game\CFileMgr.cpp" />
     <ClCompile Include="include\game\CFire.cpp" />
     <ClCompile Include="include\game\CFireManager.cpp" />
-    <ClCompile Include="include\game\CFont.cpp" />
+    <ClCompile Include="include\game\CFont.cpp"><ObjectFileName>temp\game_CFont.obj</ObjectFileName></ClCompile>
     <ClCompile Include="include\game\CGame.cpp" />
     <ClCompile Include="include\game\CGamma.cpp" />
     <ClCompile Include="include\game\CGarages.cpp" />
