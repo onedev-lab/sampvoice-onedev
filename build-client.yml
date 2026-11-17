@@ -1,0 +1,38 @@
+# Builds sampvoice.asi (client) for SA-MP 0.3.7 R1 and R3.
+# NOTE: this workflow was written without being able to run it. If it fails, the log
+# will show which include/lib path is missing; usually a one-line fix.
+name: build-client
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: windows-2022
+    strategy:
+      matrix:
+        samp: [R1, R3]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x86
+
+      - name: Install legacy DirectX SDK (d3dx9)
+        shell: pwsh
+        run: choco install directx-sdk -y --no-progress
+
+      - name: Build
+        shell: cmd
+        run: |
+          set "DXSDK=C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)"
+          set "INCLUDE=%INCLUDE%;%DXSDK%\Include"
+          set "LIB=%LIB%;%DXSDK%\Lib\x86"
+          set "CL=/DSAMP_${{ matrix.samp }}"
+          msbuild client\client.vcxproj /m /p:Configuration=Release /p:Platform=Win32 ^
+            /p:PlatformToolset=v143 /p:WindowsTargetPlatformVersion=10.0 ^
+            /p:SolutionDir=%CD%\ /p:DXSDK_DIR="%DXSDK%\\"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sampvoice-${{ matrix.samp }}
+          path: bin/sampvoice.asi
